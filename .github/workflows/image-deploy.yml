@@ -33,8 +33,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: docker_nodejs_demo
         IMAGE_TAG: nodejs_demo_image
-        VITE_API_URL: ${{ secrets.API_URL }}
       run: |
-        docker build -t btc_frontend .
+        docker build -t btc_frontend . --build-arg VITE_API_URL=${{ secrets.API_URL }}
         docker tag btc_frontend:latest 033433023709.dkr.ecr.us-east-2.amazonaws.com/btc_frontend:latest
         docker push 033433023709.dkr.ecr.us-east-2.amazonaws.com/btc_frontend:latest
