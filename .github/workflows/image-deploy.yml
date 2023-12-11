@@ -9,6 +9,8 @@ jobs:
   build:
     
     name: Build Image
+    env:
+      VITE_API_URL: ${{ secrets.API_URL }}
     runs-on: ubuntu-latest
 
    
